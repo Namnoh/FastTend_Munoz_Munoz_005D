@@ -5,5 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <app-main-menu></app-main-menu>
+  <div class="container">
+    <div class="option">
+      <img src="/assets/qr.jpg" class="qr-image"/>
+      <div class="option-text">
+        <h3 class="select">ESCANEAR QR</h3>
+      </div>
+    </div>
+  </div>
+  <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
 </ion-content>

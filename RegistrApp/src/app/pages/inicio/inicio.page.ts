@@ -12,4 +12,7 @@ export class InicioPage implements OnInit {
   ngOnInit() {
   }
 
+  mostrarMenu(){
+    console.log('EJECUCIÓN FUNCIÓN DESDE EL HOME');
+  }
 }

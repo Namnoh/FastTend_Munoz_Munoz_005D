@@ -1,0 +1,30 @@
+.container {
+    padding: 5%;
+}
+
+.qr-image {
+    filter: blur(5px);
+    padding: 5%;
+}
+
+.option-text {
+    text-align: center;
+    color: #310055;
+    background-color: #DC97FF;
+    border-radius: 50px;
+    width: 100%;
+}
+
+h3 {
+    padding: 3% 3% 3% 3%;
+}
+
+.option-text:hover {
+    background-color: #D283FF;
+    transition: background-color 0.5s;
+}
+
+.option-text:hover .select {
+    font-size: 1.5em;
+    transition: font-size 0.5s;
+}
