@@ -1,0 +1,40 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="profile-picture">
+      <img class="picture" src="/assets/profile-picture.png" alt="Profile Picture">
+    </div>
+    <div class="profile-container">
+      <div class="profile-item">
+        <ion-label class="label">Nombre</ion-label>
+        <ion-item *ngIf="isShowing">
+          <ion-input type="text" placeholder={{usuario.nombre}} name="nombre" [(ngModel)]="usuario.nombre"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="profile-item">
+        <ion-label class="label">Correo Electronico</ion-label>
+        <ion-item *ngIf="isShowing">
+          <ion-input type="email" placeholder="Ingrese su email" name="email" [(ngModel)]="usuario.email"></ion-input>
+        </ion-item>
+      </div>
+      
+      <div class="profile-item">
+        <ion-label class="label">Contraseña</ion-label>
+        <ion-item *ngIf="isShowing">
+          <ion-input type="password" placeholder="Ingrese su contraseña" name="password" [(ngModel)]="usuario.password"></ion-input>
+        </ion-item>
+      </div>
+
+      <br><br>
+      
+      <ion-button expand="block" fill="solid" shape="round" mode="ios">Guardar</ion-button>
+    </div>
+  </div>
+  <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
+</ion-content>

@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header mode="md">
   <ion-toolbar>
     <ion-title>Inicio</ion-title>
   </ion-toolbar>
@@ -6,10 +6,16 @@
 
 <ion-content>
   <div class="container">
-    <div class="option">
-      <img src="/assets/qr.jpg" class="qr-image"/>
-      <div class="option-text">
-        <h3 class="select">ESCANEAR QR</h3>
+    <div class="main-option">
+      <img class="qr-image" src="/assets/scan-qr.jpg" alt="Imagen QR">
+      <div class="hover" routerLink="/scan-qr">
+        <h3>Escanear</h3>
+      </div>
+    </div>
+    <div class="main-option">
+      <img class="qr-image" src="/assets/qr.jpg" alt="Imagen QR">
+      <div class="hover" routerLink="/generate-qr">
+        <h3>Generar QR</h3>
       </div>
     </div>
   </div>

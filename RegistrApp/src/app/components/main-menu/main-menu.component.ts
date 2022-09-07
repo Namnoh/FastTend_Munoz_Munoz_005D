@@ -14,18 +14,33 @@ interface Ventana{
   animations: [
     trigger('enterState', [
       state('void', style({
-        transform: 'scale(0) translateY(100%)',
-        opacity: -1
+        transform: 'scale(0)',
+        opacity: 0
       })),
       transition(':enter', [
         animate(300, style({
-          transform:'scale(1) translateY(0%)',
+          transform:'scale(1)',
           opacity: 1
         }))
       ]),
       transition(':leave', [
         animate(300, style({
-          transform:'scale(0) translateY(100%)',
+          transform:'scale(0)',
+          opacity: 0
+        })),
+      ])
+    ]),
+    trigger('option', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate(300, style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        animate(300, style({
           opacity: 0
         })),
       ])
@@ -44,14 +59,34 @@ export class MainMenuComponent implements OnInit {
 
   ventanas: Ventana[]=[ 
     {
-      icon: 'home-outline',
+      icon: 'home',
       name:  'Inicio',
       redirectTo: '/inicio'
     },
     {
-      icon: 'pin-outline',
-      name: 'Login',
-      redirectTo:'/login'
+      icon: 'home',
+      name:  'Inicio Profesor',
+      redirectTo: ''
+    },
+    {
+      icon: 'person',
+      name:  'Perfil',
+      redirectTo: '/profile'
+    },
+    {
+      icon: 'document-text',
+      name:  'Registro Asistencia',
+      redirectTo: ''
+    },
+    {
+      icon: 'settings',
+      name:  'Ajustes',
+      redirectTo: ''
+    },
+    {
+      icon: 'log-out',
+      name:  'Cerrar Sesión',
+      redirectTo: '/login'
     }
   ];
 
@@ -67,5 +102,4 @@ export class MainMenuComponent implements OnInit {
 
     this.mostrar.emit();
   }
-
 }

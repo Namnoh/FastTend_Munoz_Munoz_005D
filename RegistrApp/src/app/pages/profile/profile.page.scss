@@ -1,0 +1,50 @@
+// HEADER
+ion-toolbar {
+    --background: #9381FF;
+    --color:white;
+}
+
+ion-title {
+    text-align: center;
+}
+
+// GENERAL
+.container {
+    padding: 5%;
+}
+
+// CONTAINER
+.profile-picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.picture {
+    width: 50%;
+}
+
+.profile-container {
+    padding: 5% 5% 5% 5%;
+}
+
+.profile-item {
+    margin-top: 10%;
+}
+
+.label {
+    font-weight: bold;
+}
+
+ion-item {
+}
+
+.item-native::after {
+}
+
+ion-button {
+    --background: #B8B8FF;
+    --background-activated: #9381FF;
+    --background-hover:#9381FF;
+    --background-focused:#9381FF;
+}
