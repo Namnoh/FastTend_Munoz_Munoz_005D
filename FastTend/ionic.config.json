@@ -1,0 +1,7 @@
+{
+  "name": "FastTend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,25 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Iniciar Sesión</h4>
+  </div>
+
+  <ion-input placeholder="Ingrese Correo" class="primary-input" required></ion-input>
+  <ion-input placeholder="Ingrese Contraseña" type="password" class="primary-input" required></ion-input>
+
+  <div class="ion-margin-top ion-text-right forget">
+    <a (click)="forget()" (click)="dismiss()">¿Olvidaste tu contraseña?</a>
+  </div>
+
+  <div class="ion-margin-top">
+    <ion-button expand="block" (click)="login()" routerLink="/inicio" (click)="dismiss()" [disable]="form.invalid">Ingresar a la Aplicación</ion-button>
+  </div>
+
+  <div class="ion-margin-top ion-text-center">
+    <ion-button class="type" (click)="dismiss()"><a>Cerrar</a></ion-button> 
+  </div>
+
+</ion-content>

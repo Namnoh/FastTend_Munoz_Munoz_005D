@@ -1,0 +1,15 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-title>Escanear QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <img src="/assets/scanning-qr.jpg" class="Escaneando QR" />
+  </div>
+  <div class="footer">
+    <p (click)="qrManual()">Digita el código manualmente aquí.</p>
+  </div>
+  <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
+</ion-content>

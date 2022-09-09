@@ -1,0 +1,13 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-title>Generar Código QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <img src="/assets/qr.jpg" class="Generando QR" *ngIf="isGenerated"/>
+  </div>
+  <ion-button (click)="Generate()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
+  <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
+</ion-content>
