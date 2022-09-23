@@ -3,6 +3,7 @@ Repositorio de Proyecto de Aplicaciones Móviles 005D - Caso A (RegistrApp) Fast
 
 COMANDOS:
 - npm install
+- ng update @angular/cli @angular/core (OPCIONAL)
 - npm i @ionic/lab
 - npm i @angular/animations
 - npm i @ionic-native/status-bar
