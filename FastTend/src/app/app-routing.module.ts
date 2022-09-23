@@ -44,10 +44,6 @@ const routes: Routes = [
     path: 'attendance',
     loadChildren: () => import('./pages/attendance/attendance.module').then( m => m.AttendancePageModule)
   },
-  {
-    path: 'ajustes',
-    loadChildren: () => import('./pages/ajustes/ajustes.module').then( m => m.AjustesPageModule)
-  }
 ];
 
 @NgModule({

@@ -18,14 +18,29 @@ interface Ventana{
         opacity: 0
       })),
       transition(':enter', [
-        animate(260, style({
+        animate(300, style({
           transform:'scale(1)',
           opacity: 1
         }))
       ]),
       transition(':leave', [
-        animate(260, style({
+        animate(300, style({
           transform:'scale(0)',
+          opacity: 0
+        })),
+      ])
+    ]),
+    trigger('option', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition(':enter', [
+        animate(300, style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        animate(300, style({
           opacity: 0
         })),
       ])
@@ -61,7 +76,7 @@ export class MainMenuComponent implements OnInit {
     {
       icon: 'settings',
       name:  'Ajustes',
-      redirectTo: '/ajustes'
+      redirectTo: ''
     },
     {
       icon: 'log-out',
