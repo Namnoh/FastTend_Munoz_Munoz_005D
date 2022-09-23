@@ -2,6 +2,7 @@
 Repositorio de Proyecto de Aplicaciones Móviles 005D - Caso A (RegistrApp) FastTend - Munoz - Munoz.
 
 COMANDOS:
+- ng update @angular/cli @angular/core
 - npm install
 - ng update @angular/cli @angular/core (OPCIONAL)
 - npm i @ionic/lab
