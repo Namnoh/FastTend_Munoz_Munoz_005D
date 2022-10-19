@@ -1,24 +1,32 @@
 <ion-header>
-
+  <ion-toolbar>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="title">
-    <h4>Iniciar Sesión</h4>
-  </div>
 
-  <ion-input placeholder="Ingrese Correo" class="primary-input" required></ion-input>
-  <ion-input placeholder="Ingrese Contraseña" type="password" class="primary-input" required></ion-input>
+  <form [formGroup] = "formularioLogin" (keyup.enter)="Ingresar()">
+    <ion-item>
+      <ion-label position="floating"> Correo: </ion-label>
+      <ion-input formControlName="correo"></ion-input>
+    </ion-item>
 
-  <div class="ion-margin-top ion-text-right forget">
+    <ion-item>
+      <ion-label position="floating"> Password: </ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <br>
+    <br>
+    <ion-button (click) ="Ingresar()" expand="block" fill="outline" shape="round">Ingresar</ion-button>
+  </form>
+  <br>
+
+  <div class="ion-margin-top ion-text-center forget">
     <a (click)="forget()" (click)="dismiss()">¿Olvidaste tu contraseña?</a>
   </div>
-
-  <div class="ion-margin-top">
-    <ion-button expand="block" (click)="login()" routerLink="/inicio" (click)="dismiss()" [disable]="form.invalid">Ingresar a la Aplicación</ion-button>
-  </div>
-
-  <div class="ion-margin-top ion-text-center">
+  <br>
+  <div class="ion-margin-top ion-text-center ion-margin-bottom">
     <ion-button class="type" (click)="dismiss()"><a>Cerrar</a></ion-button> 
   </div>
 

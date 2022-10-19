@@ -1,34 +1,48 @@
 <ion-header>
-
+  <ion-toolbar>
+    <ion-title>Regístrate</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="title">
-    <h4>Regístrate</h4>
-  </div>
 
-  <ion-input placeholder="Nombre Completo" class="primary-input"></ion-input>
-  <ion-input placeholder="Correo" class="primary-input" type="email"></ion-input>
-  <ion-input placeholder="Contraseña" type="password" class="primary-input"></ion-input>
-  <br>
-  <ion-list>
+  <h4 class="ion-padding">Tipo de Perfil:</h4>
+  <ion-list [inset]="true" mode="ios">
     <ion-radio-group name="profile-type" value="alumno">
       <ion-item>
         <ion-label>Alumno</ion-label>
-        <ion-radio value="alumno"></ion-radio>
+        <ion-radio value="alumno" (click)="type(true)" ></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Profesor</ion-label>
-        <ion-radio value="profesor"></ion-radio>
+        <ion-radio value="profesor" (click)="type(false)"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
-  <br>
-  <p>Al registrarte, aceptas nuestros términos y condiciones</p>
-
-  <div class="ion-margin-top">
-    <ion-button class="ion-margin-center" expand="block" (click)="dismiss()">Registrarse</ion-button>
-  </div>
+  
+  <h4 class="ion-padding">Datos:</h4>
+  <form [formGroup] = "formularioRegistro" (keyup.enter)="Create()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="pass"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirme su Contraseña</ion-label>
+      <ion-input type="password" formControlName="repass"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button  (click)="Create()" (click)="dismiss()" expand="block" fill="outline" shape="round">Registrarse</ion-button>
+  </form>
+  
+  <p class="ion-padding ion-text-center">Al registrarte, aceptas nuestros términos y condiciones.</p>
 
   <div class="ion-text-center">
     <ion-button class="type" (click)="dismiss()"><a>Cerrar</a></ion-button> 

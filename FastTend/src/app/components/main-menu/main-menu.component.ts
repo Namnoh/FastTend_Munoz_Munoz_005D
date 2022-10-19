@@ -5,6 +5,7 @@ interface Ventana{
   icon: string;
   name: string;
   redirectTo: string;
+  tipo: string;
 }
 
 @Component({
@@ -37,6 +38,7 @@ export class MainMenuComponent implements OnInit {
   
   isShowing: boolean = false;
   @Output() mostrar =new EventEmitter();
+  type: string = '';
 
   constructor() {
   }
@@ -46,27 +48,32 @@ export class MainMenuComponent implements OnInit {
     {
       icon: 'home',
       name:  'Inicio',
-      redirectTo: '/inicio'
+      redirectTo: '/inicio',
+      tipo: 'all'
     },
     {
       icon: 'person',
       name:  'Perfil',
-      redirectTo: '/profile'
+      redirectTo: '/profile',
+      tipo: 'all'
     },
     {
       icon: 'document-text',
       name:  'Registro Asistencia',
-      redirectTo: '/attendance'
+      redirectTo: '/attendance',
+      tipo: 'teacher'
     },
     {
       icon: 'settings',
       name:  'Ajustes',
-      redirectTo: '/ajustes'
+      redirectTo: '/ajustes',
+      tipo: 'all'
     },
     {
       icon: 'log-out',
       name:  'Cerrar Sesión',
-      redirectTo: '/welcome'
+      redirectTo: '/welcome',
+      tipo: 'all'
     }
   ];
 
@@ -80,6 +87,18 @@ export class MainMenuComponent implements OnInit {
       console.log('MOSTRANDO');
     }
 
+    if (localStorage.getItem('type') == 'student') {
+      this.type = 'student';
+    }
+    else {
+      this.type = 'teacher';
+    }
+    console.log(this.type);
+
     this.mostrar.emit();
+  }
+
+  ionViewWillEnter() {
+    
   }
 }

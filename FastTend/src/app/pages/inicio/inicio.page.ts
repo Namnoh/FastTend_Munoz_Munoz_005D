@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  type: string = ' ';
+  
+
+  constructor() {
+  }
 
   ngOnInit() {
+    
+  }
+
+  msg() {
+    console.log('ENTRASTE A INICIO');
+  }
+
+  ionViewWillEnter() {
+    if (localStorage.getItem('type') == 'student') {
+      this.type = 'student';
+    }
+    else {
+      this.type = 'teacher';
+    }
+    console.log(this.type);
   }
 
   mostrarMenu(){
