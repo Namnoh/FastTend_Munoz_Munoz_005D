@@ -9,12 +9,13 @@
   <form [formGroup] = "formularioLogin" (keyup.enter)="Ingresar()">
     <ion-item>
       <ion-label position="floating"> Correo: </ion-label>
-      <ion-input formControlName="correo"></ion-input>
+      <ion-input formControlName="correo" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$" required></ion-input>
+      <ion-note slot="error">Email Inválido</ion-note>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating"> Password: </ion-label>
-      <ion-input formControlName="password" type="password"></ion-input>
+      <ion-input formControlName="password" type="password" required></ion-input>
     </ion-item>
     <br>
     <br>

@@ -1,18 +1,23 @@
-<ion-header mode="md">
-  <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content >
-  <div class="container">
 
-    <ion-card color="dark" routerLink="/scan-qr" *ngIf="type == 'student'">
+  <div class="main-header">
+    <h1>Inicio</h1>
+  </div>
+
+  <div class="container">
+    <ion-card *ngIf="weather && isShowing">
+        <ion-item>
+          <ion-label>Temperatura: {{weather.main.temp}} °C</ion-label>
+          <img src="/assets/{{img}}.svg" alt="Imagen de Temperatura">
+        </ion-item>
+    </ion-card>
+    <br>
+    <ion-card color="dark" routerLink="/scan-qr" *ngIf="type == 'student'" class="algo">
       <img class="" src="/assets/scan-qr.jpg" alt="Imagen QR">
       <ion-card-title class="card-title">Escanear</ion-card-title>
     </ion-card>
 
-    <ion-card color="dark" routerLink="/generate-qr" *ngIf="type != 'student'">
+    <ion-card color="dark" routerLink="/generate-qr" *ngIf="type != 'student'" class="algo">
       <img class="card-img" src="/assets/qr.jpg" alt="Imagen QR">
       <ion-card-title class="card-title">Generar QR</ion-card-title>
     </ion-card>

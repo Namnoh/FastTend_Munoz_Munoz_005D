@@ -5,6 +5,9 @@
         <ion-icon slot="start" [name]="v.icon" color="white"></ion-icon>{{ v.name }}
       </ion-item>
     </ng-container>
+    <ion-item (click)="open()" color="undefined" detail="true" mode="ios"lines="none" shape="round" (click)="logout()">
+      <ion-icon slot="start" name="log-out"></ion-icon>Cerrar Sesión
+    </ion-item>
   </ion-list>
   <h3>MENÚ</h3>
 </div>

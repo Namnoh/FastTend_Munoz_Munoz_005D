@@ -33,6 +33,7 @@ export class RegistroserviceService {
     this._storage = storage;
   }
 
+  // AGREGAR ESTUDIANTES
   async addDatos(dato: Student):Promise<any>{
     return this.storage.get(STUDENTS_KEY).then((datos : Student[])=>{
       if (datos){
@@ -44,7 +45,11 @@ export class RegistroserviceService {
     })
   }
 
+  // OBTENER ESTUDIANTES
   async getStudents():Promise<Student[]>{
     return this.storage.get(STUDENTS_KEY);
   }
+
+  // 
+
 }

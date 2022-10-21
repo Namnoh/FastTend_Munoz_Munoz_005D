@@ -77,8 +77,8 @@ export class RegisterPage implements OnInit {
   // PARTE GENERAL
   async alertError(){
     const alert = await this.alertController.create({
-      header: 'Datos incompletos.',
-      message: 'Debe completar todos los datos',
+      header: 'Datos incompletos o erroneos.',
+      message: 'Debe completar todos los datos de forma correcta.',
       buttons: ['Aceptar'],
     });
 

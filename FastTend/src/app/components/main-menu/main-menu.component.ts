@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { trigger, style, transition, animate, state } from '@angular/animations';
+import { NavController } from '@ionic/angular';
 
 interface Ventana{
   icon: string;
@@ -40,7 +41,7 @@ export class MainMenuComponent implements OnInit {
   @Output() mostrar =new EventEmitter();
   type: string = '';
 
-  constructor() {
+  constructor(private navCtrl: NavController) {
   }
   ngOnInit() {}
 
@@ -61,7 +62,7 @@ export class MainMenuComponent implements OnInit {
       icon: 'document-text',
       name:  'Registro Asistencia',
       redirectTo: '/attendance',
-      tipo: 'teacher'
+      tipo: 'student'
     },
     {
       icon: 'settings',
@@ -69,12 +70,12 @@ export class MainMenuComponent implements OnInit {
       redirectTo: '/ajustes',
       tipo: 'all'
     },
-    {
-      icon: 'log-out',
-      name:  'Cerrar Sesión',
-      redirectTo: '/welcome',
-      tipo: 'all'
-    }
+    // {
+    //   icon: 'log-out',
+    //   name:  'Cerrar Sesión',
+    //   redirectTo: '/welcome',
+    //   tipo: 'all'
+    // }
   ];
 
   open(){
@@ -100,5 +101,14 @@ export class MainMenuComponent implements OnInit {
 
   ionViewWillEnter() {
     
+  }
+
+  logout(){
+    console.log('CERRANDO SESIÓN')
+    localStorage.setItem('ingresado', 'false');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('type');
+    localStorage.removeItem('data');
+    this.navCtrl.navigateRoot('welcome');
   }
 }

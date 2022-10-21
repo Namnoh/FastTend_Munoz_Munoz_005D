@@ -24,6 +24,9 @@ export class LoginPage implements OnInit {
   students : Student[];
   msg: string;
 
+  alo = ['a', 'b'];
+  chao : string | null = JSON.parse(localStorage.getItem('student'));
+
   constructor(
     public modalCtrl: ModalController,
     private toastController: ToastController,
@@ -46,6 +49,7 @@ export class LoginPage implements OnInit {
   async Ingresar() {
     var f = this.formularioLogin.value;
     var a = false;
+    
 
     
 
@@ -53,6 +57,8 @@ export class LoginPage implements OnInit {
     this.registroService.getTeachers().then(datos=>{
       this.teachers = datos;
       if(!datos || datos.length==0){
+        this.dbMsg();
+        console.log('BASE DE DATOS INEXISTENTE O VACIA: ', datos);
         return null;
       }
 
@@ -62,6 +68,8 @@ export class LoginPage implements OnInit {
           console.log('Ingresado como Profesor');
           localStorage.setItem('ingresado', 'true');
           localStorage.setItem('profile', obj.teEmail);
+          const data = [obj.teEmail, obj.teName, obj.tePass];
+          localStorage.setItem('data', JSON.stringify(data));
           localStorage.setItem('type', 'teacher');
           this.dismiss();
           this.msg = `¡ Bienvenido  ${obj.teName} !`;
@@ -87,8 +95,9 @@ export class LoginPage implements OnInit {
               console.log('Ingresado como Alumno');
               localStorage.setItem('ingresado', 'true');
               localStorage.setItem('profile', obj.stEmail);
+              const data = [obj.stEmail, obj.stName, obj.stPass];
+              localStorage.setItem('data', JSON.stringify(data));
               localStorage.setItem('type', 'student');
-              // SIRVE PARA DESPUÉS HACER VALIDACIÓN DE SI ES ESTUDIANTE O NO console.log(localStorage.getItem('profile'));
               this.dismiss();
               this.msg = `¡ Bienvenido  ${obj.stName} !`;
               this.showToast(this.msg);
@@ -105,6 +114,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+  // MENSAJE DATOS ERRONEOS
   async alertMsg(){
     const alert = await this.alertController.create({
       header: 'Error...',
@@ -113,6 +123,28 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
     return;
+  }
+
+  // MENSAJE SIN BASE DE DATOS
+  async dbMsg(){
+    const alert = await this.alertController.create({
+      header: 'Error...',
+      message: '¡Los datos ingresados no existen!',
+      buttons: ['Aceptar'],
+    });
+    await alert.present();
+    return;
+  }
+
+  // MENSAJE INICIO DE SESIÓN
+  async showToast(msg){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+      cssClass: 'toast-css'
+    });
+    await toast.present();
   }
 
   async dismiss() {
@@ -129,15 +161,5 @@ export class LoginPage implements OnInit {
     })
 
     return await modal.present();
-  }
-
-  async showToast(msg){
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 3000,
-      position: 'top',
-      cssClass: 'toast-css'
-    });
-    await toast.present();
   }
 }

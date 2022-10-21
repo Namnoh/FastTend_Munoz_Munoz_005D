@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
+
+
 
 @Component({
   selector: 'app-inicio',
@@ -6,19 +9,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+  
+  weather;
+  estado: number;
+  img: string;
 
   type: string = ' ';
+
+  isShowing: boolean = true;
   
 
-  constructor() {
+  constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit() {
-    
-  }
-
-  msg() {
-    console.log('ENTRASTE A INICIO');
+    this.weatherService.getWeather('santiago','cl')
+    .subscribe(
+      res => {
+        console.log(res);
+        this.weather = res;
+        this.estado = this.weather.main.temp;
+        console.log(this.estado);
+        if( this.estado > 0 && this.estado < 20 ){
+          this.img = 'snowy';
+        }
+        else if ( this.estado > 20 && this.estado < 24 ) {
+          this.img = 'cloudy';
+        }
+        else{
+          this.img = 'day';
+        }
+      },
+      err => console.log(err)
+    )
   }
 
   ionViewWillEnter() {
@@ -32,6 +55,13 @@ export class InicioPage implements OnInit {
   }
 
   mostrarMenu(){
-    console.log('EJECUCIÓN FUNCIÓN DESDE EL HOME');
+    if (this.isShowing){
+      this.isShowing= false;
+      console.log('CERRANDO');
+    }
+    else{
+      this.isShowing= true;
+      console.log('MOSTRANDO');
+    }
   }
 }
