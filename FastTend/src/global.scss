@@ -34,6 +34,11 @@
     --ion-color-tint: var(--ion-color-white-tint);
 }
 
+:root{
+    --first-color: #9381FF;
+    --second-color: #b8acff;
+}
+
 // MODALES
 .login-modal {
     &::part(content){
@@ -94,12 +99,87 @@ ion-title {
     text-align: center;
     padding: 4% 8% 4% 8%;
     margin-bottom: 3%;
-    background: linear-gradient(to top,#9381FF,#b8acff);
-    color:white;
-    border-radius: 0 0 1.5rem 1.5rem;
-    -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.28); 
-    box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.28);
+    // background: linear-gradient(to top,#9381FF,#b8acff);
+    // border-radius: 0 0 1rem 1rem;
+    box-shadow: 0px 5px 15px -2px rgba(0, 0, 0, 0.178);
+    -webkit-box-shadow: 0px 5px 15px -2px rgba(0, 0, 0, 0.144);
+    width: 100%;
+    height: 11vh;
 }
+
+.main-header h1 {
+    margin: 1rem 0 1rem 0;
+}
+
+.main-header span {
+    position: absolute;
+    width: 100%;
+    top: 10.5vh;
+    box-shadow: 0 0 20px var(--first-color), 0 0 40px var(--first-color), 0 0 50px var(--second-color);
+    border-bottom: 0.3rem solid #9381FF;
+    animation: neon 10s linear infinite;
+    border-radius: 10px;
+}
+
+@keyframes neon {
+    0% {
+        transform: translateX(-160%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+// PARA HACER EL EFECTO WAVE
+// .main-header {
+//     text-align: center;
+//     padding: 4% 8% 4% 8%;
+//     margin-bottom: 3%;
+//     // color: black;
+//     // background: linear-gradient(to top,#9381FF,#b8acff);
+//     // border-radius: 0 0 1.5rem 1.5rem;
+//     // -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.28); 
+//     // box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.28);
+//     position: relative;
+//     width: 100%;
+//     height: 11vh;
+//     overflow: hidden;
+// }
+// .wave {
+//     position: absolute;
+//     margin: 0;
+//     padding: 0;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 90%;
+//     background-image: url(assets/wave-color2.png);
+//     background-size: 115% 100%;
+//     rotate: 180deg;
+//     animation: wave 5s linear infinite;
+// }
+// @keyframes wave {
+//     0% {
+//         background-position-x: 0%;
+//     }
+//     100% {
+//         background-position-x: 770%;
+//     }
+// }
+// .header-title {
+//     position: absolute;
+//     z-index: 1;
+//     left: 0;
+//     right: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     top: 0;
+//     bottom: 0;
+//     // top: 50%;
+//     // bottom: 50%;
+//     // margin-top: -25px;
+//     // margin-bottom: -25px;
+// }
 
 // CONTAINER PRINCIPAL
 .container {
