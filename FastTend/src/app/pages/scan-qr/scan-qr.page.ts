@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -8,7 +9,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class ScanQrPage implements OnInit {
 
-  constructor(private alertController: AlertController) { }
+  scannedCode: string;
+
+  constructor(private alertController: AlertController, private barcodeScanner: BarcodeScanner) { }
 
   ngOnInit() {
   }
@@ -16,6 +19,12 @@ export class ScanQrPage implements OnInit {
   // FUNCIÓN MENÚ
   mostrarMenu(){
     console.log('EJECUCIÓN FUNCIÓN DESDE EL HOME');
+  }
+
+  scanCode() {
+    this.barcodeScanner.scan().then(barcodeData =>{
+      this.scannedCode = barcodeData.text;
+    })
   }
 
   // ALERT

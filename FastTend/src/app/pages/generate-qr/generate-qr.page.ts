@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class GenerateQrPage implements OnInit {
 
   isGenerated: boolean = false;
+  qrData = null;
+  createdCode = null;
 
   constructor() { }
 
@@ -20,15 +22,19 @@ export class GenerateQrPage implements OnInit {
     console.log('EJECUCIÓN FUNCIÓN DESDE EL HOME');
   }
 
-  Generate(){
-    if (this.isGenerated){
-      this.isGenerated= false;
-      console.log('Cerrando')
-    }
-    else{
-      this.isGenerated= true;
-      console.log('Generando');
-    }
+  generateCode(){
+    this.createdCode = this.qrData;
   }
+
+  // Generate(){
+  //   if (this.isGenerated){
+  //     this.isGenerated= false;
+  //     console.log('Cerrando')
+  //   }
+  //   else{
+  //     this.isGenerated= true;
+  //     console.log('Generando');
+  //   }
+  // }
 
 }

@@ -1,4 +1,3 @@
-
 <ion-content>
 
   <div class="main-header">
@@ -7,7 +6,15 @@
   </div>
 
   <div class="container">
-    <img src="/assets/scanning-qr.jpg" class="Escaneando QR" />
+    <!-- <img src="/assets/scanning-qr.jpg" class="Escaneando QR" /> -->
+
+    <ion-card *ngIf="scannedCode">
+      <ion-card-content>
+        <p>Result from Scan: {{ scannedCode }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button (click)="scanCode()" expand="full" fill="outline" shape="round">Escanear QR</ion-button>
   </div>
   <div class="footer">
     <p (click)="qrManual()">Digita el código manualmente aquí.</p>

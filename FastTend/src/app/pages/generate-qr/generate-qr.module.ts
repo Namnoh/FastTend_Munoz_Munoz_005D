@@ -10,13 +10,16 @@ import { GenerateQrPage } from './generate-qr.page';
 
 import { ComponentsModule } from '../../components/components.module';
 
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     GenerateQrPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxQRCodeModule
   ],
   declarations: [GenerateQrPage]
 })

@@ -24,9 +24,6 @@ export class LoginPage implements OnInit {
   students : Student[];
   msg: string;
 
-  alo = ['a', 'b'];
-  chao : string | null = JSON.parse(localStorage.getItem('student'));
-
   constructor(
     public modalCtrl: ModalController,
     private toastController: ToastController,

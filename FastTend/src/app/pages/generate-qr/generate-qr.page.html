@@ -1,4 +1,3 @@
-
 <ion-content>
 
   <div class="main-header">
@@ -7,8 +6,20 @@
   </div>
 
   <div class="container">
-    <img src="/assets/qr.jpg" class="Generando QR" *ngIf="isGenerated"/>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Data" [(ngModel)]="qrData"></ion-input>
+    </ion-item>
+
+    <ion-card *ngIf="createdCode">
+      <ngx-qrcode [value]="createdCode" cssClass="qr-style"></ngx-qrcode>
+      <ion-card-content>
+        <p>Value: {{ createdCode}}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <img src="/assets/qr.jpg" class="Generando QR" *ngIf="isGenerated"/> -->
+    <ion-button (click)="generateCode()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
   </div>
-  <ion-button (click)="Generate()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
   <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
 </ion-content>

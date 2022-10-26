@@ -15,20 +15,24 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
-                  IonicStorageModule.forRoot({
+                  IonicStorageModule.forRoot({              
                     name: 'mydb',
                     driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
                   }),
-                HttpClientModule],
+                HttpClientModule,
+                NgxQRCodeModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner   
   ],
   bootstrap: [AppComponent]
 })

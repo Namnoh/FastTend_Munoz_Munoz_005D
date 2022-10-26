@@ -16,7 +16,7 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     ScanQrPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   declarations: [ScanQrPage]
 })
