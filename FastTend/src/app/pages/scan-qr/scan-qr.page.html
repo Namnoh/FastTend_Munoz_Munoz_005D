@@ -10,7 +10,9 @@
 
     <ion-card *ngIf="scannedCode">
       <ion-card-content>
-        <p>Result from Scan: {{ scannedCode }}</p>
+        <p>CLASE: {{ scannedCode[0] }}</p>
+        <p>SECCIÓN: {{ scannedCode[1] }}</p>
+        <p>HORARIO: {{ scannedCode[2] }}</p>
       </ion-card-content>
     </ion-card>
 

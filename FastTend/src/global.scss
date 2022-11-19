@@ -37,6 +37,7 @@
 :root{
     --first-color: #9381FF;
     --second-color: #b8acff;
+    --third-color: #f1eeff;
 }
 
 // MODALES
@@ -115,20 +116,21 @@ ion-title {
     position: absolute;
     width: 100%;
     top: 10.5vh;
-    box-shadow: 0 0 20px var(--first-color), 0 0 40px var(--first-color), 0 0 50px var(--second-color);
+    box-shadow: 0 0 20px var(--first-color), 0 0 40px var(--first-color), 0 0 60px var(--second-color);
     border-bottom: 0.3rem solid #9381FF;
-    animation: neon 10s linear infinite;
+    // animation: neon 10s linear infinite;
     border-radius: 10px;
+    left: 0;
 }
 
-@keyframes neon {
-    0% {
-        transform: translateX(-160%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
+// @keyframes neon {
+//     0% {
+//         transform: translateX(-160%);
+//     }
+//     100% {
+//         transform: translateX(100%);
+//     }
+// }
 
 // PARA HACER EL EFECTO WAVE
 // .main-header {
@@ -194,4 +196,17 @@ ion-title {
 // QR CODE
 .qr-style > img{
     width: 100%;
+}
+
+// ION-DATETIME
+ion-datetime {
+    --background: var(--third-color);
+    --background-rgb: 255, 241, 242;
+  
+    border-radius: 20px;
+    box-shadow: rgba(var(--first-color), 0.3) 0px 10px 15px -3px;
+}
+
+.datetime-modal {
+    --background: none;
 }

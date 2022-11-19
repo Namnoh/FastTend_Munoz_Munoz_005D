@@ -23,7 +23,11 @@ export class ScanQrPage implements OnInit {
 
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData =>{
-      this.scannedCode = barcodeData.text;
+      const data = JSON.parse(barcodeData.text);
+      this.scannedCode = data;
+      console.log(barcodeData.text);
+      console.log(this.scannedCode);
+      // this.scannedCode = barcodeData.text;
     })
   }
 

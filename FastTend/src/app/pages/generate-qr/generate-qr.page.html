@@ -7,14 +7,44 @@
 
   <div class="container">
 
-    <ion-item>
+    <ion-list *ngIf="isShowing">
+      <ion-item>
+        <ion-label>Clase:</ion-label>
+        <ion-input type="text" placeholder="Ingrese la Clase" [(ngModel)]="class"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sección:</ion-label>
+        <ion-input type="text" placeholder="Ingrese la Sección" [(ngModel)]="section"></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label>Sección:</ion-label>
+        <ion-input type="text" placeholder="Ingrese la Sección" [(ngModel)]="section"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label>Fecha:</ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" cssClass="datetime-modal">
+          <ng-template>
+            <ion-datetime
+            presentation="date"
+            id="datetime" [isDateEnabled]="isWeekday"
+            [(ngModel)]="schedule" [showDefaultButtons]="true">
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    </ion-list>
+    
+    <!-- <ion-item *ngIf="isShowing">
       <ion-input type="text" placeholder="Data" [(ngModel)]="qrData"></ion-input>
-    </ion-item>
-
+    </ion-item> -->
+    <br>
     <ion-card *ngIf="createdCode">
       <ngx-qrcode [value]="createdCode" cssClass="qr-style"></ngx-qrcode>
       <ion-card-content>
-        <p>Value: {{ createdCode}}</p>
+        <p>CLASE: {{ createdCode[0] }}</p>
+        <p>SECCIÓN: {{ createdCode[1] }}</p>
+        <p>HORARIO: {{ createdCode[2] }}</p>
       </ion-card-content>
     </ion-card>
 

@@ -23,6 +23,8 @@ export class LoginPage implements OnInit {
   teachers : Teacher[];
   students : Student[];
   msg: string;
+  student: boolean = false;
+  teacher: boolean = false;
 
   constructor(
     public modalCtrl: ModalController,
@@ -48,67 +50,60 @@ export class LoginPage implements OnInit {
     var a = false;
     
 
-    
-
     // INGRESO PROFESOR
     this.registroService.getTeachers().then(datos=>{
       this.teachers = datos;
       if(!datos || datos.length==0){
-        this.dbMsg();
-        console.log('BASE DE DATOS INEXISTENTE O VACIA: ', datos);
-        return null;
-      }
-
-      for (let obj of this.teachers){
-        if (obj.teEmail == f.correo && obj.tePass == f.password){
-          a = true;
-          console.log('Ingresado como Profesor');
-          localStorage.setItem('ingresado', 'true');
-          localStorage.setItem('profile', obj.teEmail);
-          const data = [obj.teEmail, obj.teName, obj.tePass];
-          localStorage.setItem('data', JSON.stringify(data));
-          localStorage.setItem('type', 'teacher');
-          this.dismiss();
-          this.msg = `¡ Bienvenido  ${obj.teName} !`;
-          this.showToast(this.msg);
-          this.NavController.navigateRoot('inicio');
-          console.log(a);
+        this.teacher = true;
+        console.log('BASE DE DATOS PROFESOR INEXISTENTE O VACIA: ', datos);
+      } else {
+        for (let obj of this.teachers){
+          if (obj.teEmail == f.correo && obj.tePass == f.password){
+            a = true;
+            console.log('Ingresado como Profesor');
+            localStorage.setItem('ingresado', 'true');
+            localStorage.setItem('profile', obj.teEmail);
+            const data = [obj.teEmail, obj.teName, obj.tePass];
+            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('type', 'teacher');
+            this.dismiss();
+            this.msg = `¡ Bienvenido  ${obj.teName} !`;
+            this.showToast(this.msg);
+            this.NavController.navigateRoot('inicio');
+          }
         }
       }
-      
       if(a == false){
-        console.log(a);
         console.log("NO INGRESADO COMO PROFESOR");
         // INGRESO ALUMNO
-        this.registroStudent.getStudents().then(datos=>{
-          this.students = datos;
-          if(!datos || datos.length==0){
-            return null;
-          }
- 
-          for (let obj of this.students){
-            if (obj.stEmail == f.correo && obj.stPass == f.password){
-              a = true;
-              console.log('Ingresado como Alumno');
-              localStorage.setItem('ingresado', 'true');
-              localStorage.setItem('profile', obj.stEmail);
-              const data = [obj.stEmail, obj.stName, obj.stPass];
-              localStorage.setItem('data', JSON.stringify(data));
-              localStorage.setItem('type', 'student');
-              this.dismiss();
-              this.msg = `¡ Bienvenido  ${obj.stName} !`;
-              this.showToast(this.msg);
-              this.NavController.navigateRoot('inicio');
-              console.log(a);
+        this.registroStudent.getStudents().then(data=>{
+          this.students = data;
+          if(!data || data.length==0){
+            console.log('BASE DE DATOS ALUMNOS INEXISTENTE O VACIA: ', datos);
+          } else {
+            for (let obj of this.students){
+              if (obj.stEmail == f.correo && obj.stPass == f.password){
+                a = true;
+                console.log('Ingresado como Alumno');
+                localStorage.setItem('ingresado', 'true');
+                localStorage.setItem('profile', obj.stEmail);
+                const data = [obj.stEmail, obj.stName, obj.stPass];
+                localStorage.setItem('data', JSON.stringify(data));
+                localStorage.setItem('type', 'student');
+                this.dismiss();
+                this.msg = `¡ Bienvenido  ${obj.stName} !`;
+                this.showToast(this.msg);
+                this.NavController.navigateRoot('inicio');
+              }
             }
           }
-          if(a == false){
-            console.log("NO INGRESADO COMO ALUMNO");
-             this.alertMsg();
+          if (a == false){
+            this.dbMsg();
           }
         });
       }
     });
+    
   }
 
   // MENSAJE DATOS ERRONEOS
