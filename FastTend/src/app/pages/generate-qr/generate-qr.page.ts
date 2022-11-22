@@ -15,8 +15,17 @@ export class GenerateQrPage implements OnInit {
   isShowing: boolean = true;
 
   class: string;
+
   section: string;
+
   schedule: string;
+  fecha: string = "";
+
+  beginning: string;
+  inicio: string = "";
+  
+  ending: string;
+  final: string = "";
 
   constructor() { }
 
@@ -38,12 +47,21 @@ export class GenerateQrPage implements OnInit {
   // FUNCIÓN GENERAR QR
   generateCode(){
     if (this.class){
-      const data = [this.class, this.section, this.schedule];
+      const dateFromIonDatetime = this.schedule;
+      const formattedString = format(parseISO(dateFromIonDatetime), 'dd-MM-yyyy');
+      this.fecha = formattedString;
+      const hour1 = this.beginning;
+      const format1 = format(parseISO(hour1), 'HH:mm');
+      this.inicio = format1;
+      const hour2 = this.ending;
+      const format2 = format(parseISO(hour2), 'HH:mm');
+      this.final = format2;
+      const data = [this.class, this.section, this.fecha, this.inicio, this.final];
       this.qrData = JSON.stringify(data);
       const datos = JSON.parse(this.qrData);
       this.createdCode = datos;
     } else {
-      console.log('NO HAY DATO CLASE')
+      console.log('NO HAY DATO / CLASE')
 
       // HACER VALIDACIÓN PARA QUE ESTÉN TODOS LOS DATOS ANTES DE GENERAR
       // TALVEZ ME CONVIENE USAR EL FORMULARIO REACTIVO

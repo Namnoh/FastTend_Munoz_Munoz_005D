@@ -16,10 +16,6 @@
         <ion-label>Sección:</ion-label>
         <ion-input type="text" placeholder="Ingrese la Sección" [(ngModel)]="section"></ion-input>
       </ion-item>
-      <!-- <ion-item>
-        <ion-label>Sección:</ion-label>
-        <ion-input type="text" placeholder="Ingrese la Sección" [(ngModel)]="section"></ion-input>
-      </ion-item> -->
       <ion-item>
         <ion-label>Fecha:</ion-label>
         <ion-datetime-button datetime="datetime"></ion-datetime-button>
@@ -29,6 +25,32 @@
             presentation="date"
             id="datetime" [isDateEnabled]="isWeekday"
             [(ngModel)]="schedule" [showDefaultButtons]="true">
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hora Inicio:</ion-label>
+        <ion-datetime-button datetime="datetime2"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" cssClass="datetime-modal">
+          <ng-template>
+            <ion-datetime
+            presentation="time"
+            id="datetime2"
+            [(ngModel)]="beginning" [showDefaultButtons]="true">
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hora Termino:</ion-label>
+        <ion-datetime-button datetime="datetime3"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" cssClass="datetime-modal">
+          <ng-template>
+            <ion-datetime
+            presentation="time"
+            id="datetime3"
+            [(ngModel)]="ending" [showDefaultButtons]="true">
             </ion-datetime>
           </ng-template>
         </ion-modal>
@@ -44,11 +66,12 @@
       <ion-card-content>
         <p>CLASE: {{ createdCode[0] }}</p>
         <p>SECCIÓN: {{ createdCode[1] }}</p>
-        <p>HORARIO: {{ createdCode[2] }}</p>
+        <p>FECHA: {{ createdCode[2] }}</p>
+        <p>HORA INICIO: {{ createdCode[3] }}</p>
+        <p>HORA TERMINO: {{ createdCode[4] }}</p>
       </ion-card-content>
     </ion-card>
 
-    <!-- <img src="/assets/qr.jpg" class="Generando QR" *ngIf="isGenerated"/> -->
     <ion-button (click)="generateCode()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
   </div>
   <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
