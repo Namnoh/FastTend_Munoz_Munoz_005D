@@ -20,6 +20,8 @@ COMANDOS:
 - npm install @awesome-cordova-plugins/barcode-scanner
 - ionic cap sync
 
+    JSON SERVER (API)
+- npm install -g json-server
 
 EN POWERSHELL:
 ```
