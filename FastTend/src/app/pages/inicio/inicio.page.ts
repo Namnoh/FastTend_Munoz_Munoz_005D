@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
-
-
+import { IClase } from '../../interfaces/idato';
+import { DatosApiService } from '../../services/datos-api.service';
 
 @Component({
   selector: 'app-inicio',
@@ -17,9 +17,16 @@ export class InicioPage implements OnInit {
   type: string = ' ';
 
   isShowing: boolean = true;
+
+  clase : IClase = {
+    sigla:"",
+    nombre:"",
+    seccion:"",
+    profesor:localStorage.getItem('profile'),
+  };
   
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private datosApi:DatosApiService) {
   }
 
   ngOnInit() {
@@ -63,5 +70,11 @@ export class InicioPage implements OnInit {
       this.isShowing= true;
       console.log('MOSTRANDO');
     }
+  }
+
+  // API
+  crearClase(){
+    this.datosApi.crearClase(this.clase).subscribe();
+    console.log('Clase Guardada')
   }
 }

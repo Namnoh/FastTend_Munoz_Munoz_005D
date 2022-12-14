@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Student{
   stName: string;
@@ -21,9 +24,7 @@ export class RegistroserviceService {
   private _storage: Storage;
   newStudent: Student = <Student>{};
   
-
-  
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private http: HttpClient) {
     this.init();
   }
 
@@ -38,6 +39,7 @@ export class RegistroserviceService {
     return this.storage.get(STUDENTS_KEY).then((datos : Student[])=>{
       if (datos){
         datos.push(dato);
+        // this.crearStudent(dato).subscribe();
         return this.storage.set(STUDENTS_KEY, datos);
       } else {
         return this.storage.set(STUDENTS_KEY, [dato]);
@@ -50,6 +52,14 @@ export class RegistroserviceService {
     return this.storage.get(STUDENTS_KEY);
   }
 
-  // ACTUALIZAR UN ESTUDIANTE
+  // // MANDAR A API
+  // listarEstudiantes():Observable<IStudents>{
+  //   return this.http.get<IStudents>(`${environment.apiURL}/datos`);
+  // }
 
+  // // CREAR EN API
+  // crearStudent(nStudent: Student):Observable<Student>{
+  //   return this.http.post<Student>(`${environment.apiURL}/datos`,nStudent)
+  // }
+  
 }

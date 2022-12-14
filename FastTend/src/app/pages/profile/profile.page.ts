@@ -31,8 +31,7 @@ export class ProfilePage implements OnInit {
   usuario={
     name:'',
     email:'',
-    pass:'',
-    algo: ''
+    pass:''
   }
 
   // FUNCIÓN PARA OBTENER LA INFORAMCIÓN DEL USUARIO

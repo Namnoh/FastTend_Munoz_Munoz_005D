@@ -9,10 +9,17 @@
     <!-- <img src="/assets/scanning-qr.jpg" class="Escaneando QR" /> -->
 
     <ion-card *ngIf="scannedCode">
+      <ion-card-header>
+        <ion-card-title>CÓDIGO ESCANEADO EXITOSAMENTE.</ion-card-title>
+        <ion-card-subtitle>Su asistencia en la clase se ha guardado:</ion-card-subtitle>
+      </ion-card-header>
       <ion-card-content>
-        <p>CLASE: {{ scannedCode[0] }}</p>
-        <p>SECCIÓN: {{ scannedCode[1] }}</p>
-        <p>HORARIO: {{ scannedCode[2] }}</p>
+        <p>Sigla: {{ sAsist.sig }}</p>
+        <p>Clase: {{ sAsist.nombre }}</p>
+        <p>Sección: {{ sAsist.seccion }}</p>
+        <p>Fecha: {{ sAsist.fecha }}</p>
+        <p>Horario Inicio: {{ sAsist.horaInicio }}</p>
+        <p>Horario Final: {{ sAsist.horaFinal }}</p>
       </ion-card-content>
     </ion-card>
 

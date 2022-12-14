@@ -8,13 +8,20 @@
   <div class="container">
 
     <ion-list *ngIf="isShowing">
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Clase:</ion-label>
         <ion-input type="text" placeholder="Ingrese la Clase" [(ngModel)]="class"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Sección:</ion-label>
         <ion-input type="text" placeholder="Ingrese la Sección" [(ngModel)]="section"></ion-input>
+      </ion-item> -->
+      <div *ngIf="error">{{errorclase</div>
+      <ion-item>
+        <ion-label>Clase:</ion-label>
+          <ion-select placeholder="Seleccione la Clase" (ionChange)="handleChange($event)">
+            <ion-select-option *ngFor="let c of clases" [value]="c">{{c.sigla}}-{{c.seccion}}</ion-select-option>
+          </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Fecha:</ion-label>
@@ -57,22 +64,31 @@
       </ion-item>
     </ion-list>
     
+    <br><br>
+    <ion-button (click)="generateCode()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
+
     <!-- <ion-item *ngIf="isShowing">
       <ion-input type="text" placeholder="Data" [(ngModel)]="qrData"></ion-input>
     </ion-item> -->
     <br>
-    <ion-card *ngIf="createdCode">
-      <ngx-qrcode [value]="createdCode" cssClass="qr-style"></ngx-qrcode>
-      <ion-card-content>
-        <p>CLASE: {{ createdCode[0] }}</p>
-        <p>SECCIÓN: {{ createdCode[1] }}</p>
-        <p>FECHA: {{ createdCode[2] }}</p>
-        <p>HORA INICIO: {{ createdCode[3] }}</p>
-        <p>HORA TERMINO: {{ createdCode[4] }}</p>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-button (click)="generateCode()" expand="full" fill="outline" shape="round">Generar QR</ion-button>
+    <div *ngIf="createdCode">
+      <ion-card>
+        <ngx-qrcode [value]="createdCode" cssClass="qr-style"></ngx-qrcode>
+        <ion-card-content>
+          <p>SIGLA: {{ clase[0] }}</p>
+          <p>CLASE: {{ clase[1] }}</p>
+          <p>SECCIÓN: {{ clase[2] }}</p>
+          <p>FECHA: {{ clase[3] }}</p>
+          <p>HORA INICIO: {{ clase[4] }}</p>
+          <p>HORA TERMINO: {{ clase[5] }}</p>
+        </ion-card-content>
+      </ion-card>
+      <br><br>
+  
+      <ion-button (click)="guardarAsistencia()" expand="full" fill="outline" shape="round">Guardar Asistencia</ion-button>
+    </div>
   </div>
+  <br><br>
+
   <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
 </ion-content>

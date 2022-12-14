@@ -19,10 +19,43 @@
       <ion-card-title class="card-title">Escanear</ion-card-title>
     </ion-card>
 
-    <ion-card color="dark" routerLink="/generate-qr" *ngIf="type != 'student'" class="algo">
-      <img class="card-img" src="/assets/qr.jpg" alt="Imagen QR">
-      <ion-card-title class="card-title">Generar QR</ion-card-title>
-    </ion-card>
+    <div class="" *ngIf="type != 'student'">
+      <ion-card color="dark" routerLink="/generate-qr" class="algo">
+        <img class="card-img" src="/assets/qr.jpg" alt="Imagen QR">
+        <ion-card-title class="card-title">Generar QR</ion-card-title>
+      </ion-card>
+      <br><br>
+      <!-- BOTÓN MODAL-->
+      <ion-button expand="block" fill="solid" shape="round" mode="ios" id="crearClase-modal">Agregar Clase</ion-button>
+      <!-- MODAL --> 
+      <ion-modal #modal trigger="crearClase-modal" cssClass="modal">
+        <ng-template>
+          <ion-content class="ion-padding update-content">
+             <div class="ion-padding update-profile">
+              <form>
+                <br>
+                  <ion-item lines="none" color="light">
+                     <ion-label position="floating">Sigla:</ion-label>
+                     <ion-input type="text" placeholder="Ej: ABCD" [(ngModel)]="clase.sigla" name="sigla" required></ion-input>
+                  </ion-item>
+                  <br>
+                  <ion-item lines="none" color="light">
+                     <ion-label position = "floating">Nombre:</ion-label>
+                     <ion-input type="text" placeholder="Ej: Matemáticas" [(ngModel)]="clase.nombre" name="nombre" required></ion-input>
+                  </ion-item>
+                  <br>
+                  <ion-item lines="none" color="light">
+                     <ion-label position = "floating">Sección:</ion-label>
+                     <ion-input type="text" placeholder="Ej: 001D" [(ngModel)]="clase.seccion" name="seccion" required></ion-input>
+                  </ion-item>
+                  <br><br>
+                  <ion-button expand="block" fill="clear" shape="round" (click)="crearClase()" (click)="modal.dismiss()">Guardar</ion-button>
+               </form>
+             </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </div>
   </div>
   <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
 

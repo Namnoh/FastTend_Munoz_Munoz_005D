@@ -1,0 +1,46 @@
+{
+  "estudiantes": [
+    {
+      "stName": "Fabián Muñoz",
+      "stEmail": "fa.munozs@duocuc.cl",
+      "id": 1
+    }
+  ],
+  "clases": [
+    {
+      "sigla": "ABC",
+      "nombre": "NINGUNA",
+      "seccion": "001D",
+      "profesor": "a@a.cl",
+      "id": 1
+    },
+    {
+      "sigla": "ZZZ",
+      "nombre": "ZZZETA",
+      "seccion": "003D",
+      "profesor": "z@z.cl",
+      "id": 2
+    },
+    {
+      "sigla": "AAAA",
+      "nombre": "Olimpiadas",
+      "seccion": "005D",
+      "profesor": "a@a.cl",
+      "id": 3
+    },
+    {
+      "sigla": "LLL",
+      "nombre": "like",
+      "seccion": "005D",
+      "profesor": "f@f.cl",
+      "id": 4
+    },
+    {
+      "sigla": "PGY",
+      "nombre": "Programación Móvil",
+      "seccion": "005D",
+      "profesor": "vivisol@profesor.duoc.cl",
+      "id": 5
+    }
+  ]
+}

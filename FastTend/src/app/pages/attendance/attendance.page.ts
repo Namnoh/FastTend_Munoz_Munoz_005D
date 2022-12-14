@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TAsistenciaService, tAsist } from '../../services/t-asistencia.service';
+import { SAsistenciaService, sAsist } from '../../services/s-asistencia.service';
 
 @Component({
   selector: 'app-attendance',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttendancePage implements OnInit {
 
-  constructor() { }
+  type : string;
+  listaT : tAsist[];
+  listaS : sAsist[];
+
+  constructor(private tAsistenciaService: TAsistenciaService, private sAsistenciaService: SAsistenciaService) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.type = localStorage.getItem('type');
+    this.tAsistenciaService.getAll().then(datos => {
+      this.listaT = datos;
+    })
+    this.sAsistenciaService.getAll().then(datos => {
+      this.listaS = datos;
+    })
   }
 
   mostrarMenu(){

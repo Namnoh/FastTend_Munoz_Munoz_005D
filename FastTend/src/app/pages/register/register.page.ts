@@ -72,7 +72,6 @@ export class RegisterPage implements OnInit {
       }
     }
   }
-
   
   // PARTE GENERAL
   async alertError(){

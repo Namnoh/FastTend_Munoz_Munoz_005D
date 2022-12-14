@@ -19,20 +19,13 @@
         <p><b>Email</b></p>
         <p>{{usuario.email}}</p>
       </div>
-
-      <!-- <div class="profile-item">
-        <p>{{usuario.name}}</p>
-        <ion-item *ngIf="isShowing">
-          <ion-input type="text" placeholder={{usuario.name}}  [(ngModel)]="usuario.name"></ion-input>
-        </ion-item>
-      </div>-->
-      <!-- <br><br> -->
+      
       <br><br>
     </div>
     <!-- BOTÓN MODAL-->
-    <ion-button expand="block" fill="solid" shape="round" mode="ios" id="open-modal">Actualizar Datos</ion-button>
+    <ion-button expand="block" fill="solid" shape="round" mode="ios" id="modal">Actualizar Datos</ion-button>
     <!-- MODAL --> 
-    <ion-modal #modal trigger="open-modal" cssClass="profile-modal">
+    <ion-modal #modal trigger="modal" cssClass="profile-modal">
       <ng-template>
         <ion-content class="ion-padding update-content">
            <div class="ion-padding update-profile">

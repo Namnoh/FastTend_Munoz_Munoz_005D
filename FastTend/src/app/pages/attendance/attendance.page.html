@@ -6,17 +6,35 @@
     <span></span>
   </div>
 
-  <div class="container">
-    <ion-card>
+  <div class="container" *ngIf="type == 'student'">
+    <ion-card  *ngFor="let l of listaS">
       <ion-card-header>
-        <ion-card-subtitle>Clase:</ion-card-subtitle>
-        <ion-card-title>Programación de Aplicaciones Moviles</ion-card-title>
+        <ion-card-subtitle>{{l.sig}}</ion-card-subtitle>
+        <ion-card-title>{{l.nombre}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        Fecha: 09/09/2022<br>
-        Hora: 15:30
+        <p>Sección: {{l.seccion}}</p>
+        <p>Fecha: {{l.fecha}}</p><br>
+        <p>Hora Inicio: {{l.horaInicio}}</p><br>
+        <p>Hora Final: {{l.horaFinal}} </p><br><br>
       </ion-card-content>
     </ion-card>
   </div>
+
+  <div class="container" *ngIf="type == 'teacher'">
+    <ion-card  *ngFor="let l of listaT">
+      <ion-card-header>
+        <ion-card-subtitle>{{l.fecha}}</ion-card-subtitle>
+        <ion-card-title>{{l.siglas}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Hora Inicio: {{l.horaInicio}}<br>
+        Hora Final: {{l.horaFinal}} <br><br>
+        Estudiantes: <br>
+        <p *ngFor="let e of l.listaEstudiantes">- {{e.stName}} / {{e.stEmail}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
   <app-main-menu (mostrar)="mostrarMenu()"></app-main-menu>
 </ion-content>

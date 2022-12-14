@@ -24,3 +24,29 @@ ion-card:hover {
         transition: all 0.5s;
     }
 }
+
+ion-modal {
+    --height: 65vh;
+    padding: 0 .5rem 0 .5rem;
+    --background: none;
+}
+
+.update-profile {
+    background: var(--third-color);
+  
+    border-radius: 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+    box-shadow: rgba(var(--first-color), 0.3) 0px 10px 15px -3px;
+}
+
+.update-content {
+    --background: none;
+}
+
+
+ion-button {
+    --background: #B8B8FF;
+    --background-activated: #9381FF;
+    --background-hover:#9381FF;
+    --background-focused:#9381FF;
+}

@@ -62,18 +62,18 @@ export class MainMenuComponent implements OnInit {
       icon: 'document-text',
       name:  'Registro Asistencia',
       redirectTo: '/attendance',
-      tipo: 'student'
+      tipo: 'all'
     },
     {
       icon: 'settings',
       name:  'Ajustes',
       redirectTo: '/ajustes',
       tipo: 'all'
-    },
+    }
     // {
-    //   icon: 'log-out',
-    //   name:  'Cerrar Sesión',
-    //   redirectTo: '/welcome',
+    //   icon: 'moon',
+    //   name:  'Lista',
+    //   redirectTo: '/listar-students',
     //   tipo: 'all'
     // }
   ];
